@@ -1,7 +1,370 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+<title>Michael Black - Project 1</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://d3js.org/d3.v3.min.js"></script>
+<script src="https://cdnjs.com/libraries/d3-legend"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.7.0/d3.min.js"></script>
+<link rel="stylesheet" href="style.css">
+<style>
+body,h1,h2,h3,h4,h5 {font-family: "Poppins", sans-serif}
+body {font-size:16px;}
+.w3-half img{margin-bottom:-6px;margin-top:16px;opacity:0.8;cursor:pointer}
+.w3-half img:hover{opacity:1}
+</style>
+</head>
 <body>
-<h1>Hello World</h1>
-<p>I'm hosted with GitHub Pages.</p>
+
+<!-- Sidebar/menu -->
+<nav class="w3-sidebar w3-red w3-collapse w3-top w3-large w3-padding" style="z-index:3;width:300px;font-weight:bold;" id="mySidebar"><br>
+  <a href="javascript:void(0)" onclick="w3_close()" class="w3-button w3-hide-large w3-display-topleft" style="width:100%;font-size:22px">Close Menu</a>
+  <div class="w3-container">
+  </div>
+  <div class="w3-bar-block">
+    <a href="#home" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Home</a>
+    <a href="#services" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Charts & Graphs</a> 
+    <a href="#designers" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Report</a> 
+    <a href="#packages" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Video Presentation</a> 
+  </div>
+</nav>
+
+<!-- Top menu on small screens -->
+<header class="w3-container w3-top w3-hide-large w3-red w3-xlarge w3-padding">
+  <a href="javascript:void(0)" class="w3-button w3-red w3-margin-right" onclick="w3_open()">&#9776;</a>
+  <span>Navigation Menu</span>
+</header>
+
+<!-- Overlay effect when opening sidebar on small screens -->
+<div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+<!-- !PAGE CONTENT! -->
+<div class="w3-main" id="home" style="margin-left:340px;margin-right:40px">
+
+  <!-- Header -->
+  <div class="w3-container" style="margin-top:40px" id="showcase">
+    <h1 class="w3-jumbo"><b>Broad Street Cholera Outbreak - London, 1854</b></h1>
+    <h3><b>Michael Black - Data Visualization, Project 1</b></h3>
+    <hr>
+    <p style="text-align:center;">The Broad Street cholera outbreak
+    of 1854 was a deadly outbreak of chlorea which ultimately claimed the lives of
+    <b>616</b> citizens in a neighborhood of London known as Soho.
+    <br><br>
+    Below, you will find a detailed map showing who died as well as where they died, and how proximity to certain water pumps played a role in these deaths.
+    You will also find various charts breaking down the pandemic
+    by showing the timeline of deaths, the breakdown by age, and the breakdown
+    by gender.
+    </p>
+    <hr>
+  </div>
+
+  <!-- VISUALIZATIONS -->
+  <div class="w3-container" id="services" style="margin-top:25px">
+    <h1 class="w3-xxxlarge w3-text-red"><b>Charts & Graphs</b></h1>
+    <hr style="width:50px;border:5px solid red" class="w3-round">
+
+    <div class="w3-row-padding">
+            <div class="w3-half">
+                <h2>Map of Soho, London (1854)</h2>
+                <img src="streetmap.jpg" style="width:400px;height:450px;">
+                <!-- <svg id="street-map" width="600" height="550"></svg> -->
+            </div>
+            <div class="w3-half">
+                <h2>Deaths by Day</h2>
+                <canvas id="chart" width="300" height="350"></canvas>
+            </div>
+
+            <div class="w3-half">
+                <h2>Deaths by Age Group</h2>
+                <canvas id="myChart" width="350" height="400"></canvas>
+            </div>
+            <div class="w3-half">
+                <h2>Deaths by Sex</h2>
+                <canvas id="myChart2" width="350" height="400"></canvas>
+            </div>
+    </div>
+
+  <!-- REPORT -->
+  <div class="w3-container" id="designers" style="margin-top:75px">
+    <h1 class="w3-xxxlarge w3-text-red"><b>Report</b></h1>
+    <hr style="width:50px;border:5px solid red" class="w3-round">
+    <h3>Design Process</h3>
+    <p>I was lucky enough to both begin and end my project with the same page-layout structure.
+    <br><br>I knew immediately that I wanted everything on one page, but needed to do so in a way
+    that didn't feel over-crowded or messy.  My first thought was to have clear page breaks that
+    defined each section.  Something like a literal line going across the page so that the viewer
+    would know without a doubt that they were moving from one section to another.  I then thought 
+    about web pages I visit and couldn't think of many that followed that design process.  It's almost
+    too simple and there's very little creativity in simply blocking off chunks of the same page for
+    different sections.
+    <br><br>So, with this in mind, I settled on the following design principle:
+    <br><br><img src="drawn_viz.jpg" style="width:600px;height:450px;"><br><br>
+    What I liked so much about this was the smooth, clean flow of the page.  Rather than clicking from
+    link to link, the viewer could obtain every bit of information from the site on this one page.  Yet, 
+    it still felt properly broken into seperate sections and did not feel crowded.<br><br>
+    The cherry on the top for me with this design was finding a template that allowed me to move up and 
+    down the page to the various sections by clicking the links on the left (or top if you are viewing this
+    on a small screen).  Who needs scrolling?  I loved the idea of all of my information on one page while
+    retaining the ease of clicking links to move up and down the page.<br>
+    <h3>Design Choices</h3>
+    My thought process for my colors was fairly simple: use colors together that are very different from
+    one another.  As an example, for my map I used:
+    <ul>
+        <li>Turquoise</li>
+        <li>Purple</li>
+        <li>Black</li>
+        <li>Red bolded wording</li>
+    </ul><br>
+    For my accompanying graphs, it is easily apparent that the colors are very different from those next to them.  Another great feature
+    of my visualizations is that by hovering over any part, the viewer can see the label and the data point.
+    This feature is useful for anyone who has trouble differentiating between colors on a webpage.
+    <h3>Answered Questions</h3>
+    One of my first thoughts when I began this project was which age group suffered the most loss due to this pandemic?
+    Naturally, one would assume the elderly and the young, but I thought because of the manner in which 11-20
+    year olds worked outside of the home back then, maybe they would have suffered an equal amount.  My Polar Area
+    graph does a great job of showing very clearly that the young and the elderly did in fact suffer the most losses, by
+    a considerable margin.<br><br>
+    Although my street map does have some limitations (explained in the video below) it does a great job of
+    showing the particlar pumps which led to the most outbreak.  Due to the accurate plotting of the deaths, 
+    street names, and pump locations, the viewer has no trouble understanding where the epicenter of the outbreak
+    occured.
+    </p>
+  </div>
+
+  <!-- VIDEO PRESENTATION -->
+  <div class="w3-container" id="packages" style="margin-top:25px">
+    <h1 class="w3-xxxlarge w3-text-red"><b>Video</b></h1>
+    <hr style="width:50px;border:5px solid red" class="w3-round">
+    <p>Some text our prices. Lorem ipsum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure</p>
+  </div>
+
+  
+</div>
+
+<!-- End page content -->
+</div>
+
+<!-- W3.CSS Container -->
+<div class="w3-light-grey w3-container w3-padding-32" style="margin-top:75px;padding-right:58px"><p class="w3-right">Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-opacity">w3.css</a></p></div>
+
+<script>
+// Script to open and close sidebar
+function w3_open() {
+  document.getElementById("mySidebar").style.display = "block";
+  document.getElementById("myOverlay").style.display = "block";
+}
+ 
+function w3_close() {
+  document.getElementById("mySidebar").style.display = "none";
+  document.getElementById("myOverlay").style.display = "none";
+}
+
+// Modal Image Gallery
+function onClick(element) {
+  document.getElementById("img01").src = element.src;
+  document.getElementById("modal01").style.display = "block";
+  var captionText = document.getElementById("caption");
+  captionText.innerHTML = element.alt;
+}
+</script>
+
+<script>
+    // CREATING MY STREET MAP
+    // ------------------------------------------------------
+        d3.json("streets.json", function (data) {
+
+        // Set scale
+        var scale = 26;
+        
+        // Define svg and set width and height
+        var svg = d3.select("#street-map").append("svg")
+        .attr("width", 2000)
+        .attr("height", 2000);
+        
+        // Read in JSON data and plot to svg
+        svg.selectAll("line")
+        .data(data)
+        .enter()
+        .append("line")
+        .attr("x1", function (d) { return d[0].x * scale; })
+        .attr("y1", function (d) { return d[0].y * scale; })
+        .attr("x2", function (d) { return d[1].x * scale; })
+        .attr("y2", function (d) { return d[1].y * scale; })
+        .attr("stroke-width", 2)
+        .attr("stroke", "black");
+
+    });
+
+    // Set legend
+    var svg = d3.select("#street-map")
+    svg.append('circle').attr('cx', 100).attr('cy', 500).attr('r', 6).style('fill', '#69b3a2')
+    svg.append('circle').attr('cx', 100).attr('cy', 520).attr('r', 6).style('fill', '#404080')
+    svg.append('circle').attr('cx', 100).attr('cy', 540).attr('r', 6).style('fill', 'black')
+    svg.append("text").attr("x", 120).attr("y", 500).text("Male").style("font-size", "15px").attr("alignment-baseline","middle")
+    svg.append("text").attr("x", 120).attr("y", 520).text("Female").style("font-size", "15px").attr("alignment-baseline","middle")
+    svg.append("text").attr("x", 120).attr("y", 540).text("Pump").style("font-size", "15px").attr("alignment-baseline","middle")
+
+    // PLOT PUMPS
+    // ------------------------------------------------------
+    d3.csv("pumps.csv", function (data) {
+
+        // Set variable to svg from above
+        var pumps = d3.select('#street-map').append('svg');
+
+        pumps.selectAll('circle').data(data).enter().append('circle')
+             .style('fill', 'black').attr('r', '6px')
+             .attr('cx', function(d) { return d.x * 26; })
+             .attr('cy', function(d) { return d.y * 26; });
+    });
+
+    // PLOT STREET NAMES AND OTHER LOCATIONS
+    // ------------------------------------------------------
+    d3.csv("maplabels.csv", function (data) {
+        var labels = d3.select("#street-map").append("svg");
+
+        labels.selectAll('text').data(data).enter().append('text')
+            .attr('x', function(d) { return d.x; })
+            .attr('y', function(d) { return d.y; })
+            .attr("font-size", 15)
+            .attr("fill", "red")
+            .attr("font-weight", 700)
+            .text(function(d) { return d.text; });
+    });
+
+    // PLOT DEATHS
+    // ------------------------------------------------------
+    d3.csv("deaths_age_sex.csv", function (data) {
+
+        var plot_deaths = d3.select("#street-map").append("svg");
+
+        var male = [];
+        var female = [];
+
+        for (var i = 0; i < data.length; i++) {
+            var death = data[i];
+
+            if (death.gender < 1) {
+                male.push(death);
+            } else {
+                female.push(death);
+            }
+        };
+
+        plot_deaths.selectAll('circle').data(male).enter().append('circle')
+             .style('fill', '#69b3a2').attr('r', '3px')
+             .attr('cx', function(d) { return d.x * 26; })
+             .attr('cy', function(d) { return d.y * 26; });
+
+        plot_deaths.append("svg").selectAll('circle').data(female).enter().append('circle')
+             .style('fill', '#404080').attr('r', '3px')
+             .attr('cx', function(d) { return d.x * 26; })
+             .attr('cy', function(d) { return d.y * 26; });
+        
+    });
+
+    // CREATE DEATHS BY DAY HORIZONTAL BAR CHART
+    // ------------------------------------------------------
+    d3.csv('deathdays.csv').then(makeChart);
+
+        function makeChart(deaths) {
+            var dates = deaths.map(function(d) { return d.date });
+            var dailyDeaths = deaths.map(function(d) { return d.deaths });
+
+            var chart = new Chart('chart', {
+                type: 'horizontalBar',
+                data: {
+                labels: dates,
+                datasets: [
+                    {
+                    label: 'Deaths per Day',
+                    data: dailyDeaths,
+                    backgroundColor: 'lightblue',
+                    hoverBackgroundColor: 'red'
+                    }
+                ]
+                }
+        });
+    }
+
+    // CREATE DEATHS BY AGE GROUP POLAR CHART
+    // ------------------------------------------------------
+    var ctx = document.getElementById("myChart");
+    
+    var myChart = new Chart(ctx, {
+    type: 'polarArea',
+    data: {
+        labels: ['0-10', '11-20', '21-40', '41-60', '61-80', '> 80'],
+        datasets: [{
+        label: 'Deaths by Age Group',
+        data: [143, 48, 58, 57, 91, 174],
+        backgroundColor: [
+            'red',
+            'green',
+            'yellow',
+            'blue',
+            'orange',
+            'purple'
+        ],
+        borderColor: [
+            'red',
+            'green',
+            'yellow',
+            'blue',
+            'orange',
+            'purple'
+        ],
+        borderWidth: 1
+        }]
+    },
+    options: {
+        responsive: false,
+        plugins: {
+            title: {
+                display: true,
+                text: "Deaths per Age Group"
+            }
+        }
+
+    }
+});
+
+// CREATE DEATHS BY GENDER DOUGHNUT CHART
+// ------------------------------------------------------
+var ctx = document.getElementById("myChart2");
+    
+    var myChart = new Chart(ctx, {
+    type: 'doughnut',
+    data: {
+        labels: ['Male', 'Female'],
+        datasets: [{
+        label: 'Deaths by Sex',
+        data: [284, 287],
+        backgroundColor: [
+            'rgba(255, 99, 132, 0.5)',
+            'rgba(49, 55, 36, 0.8)'
+        ],
+        borderColor: [
+            'rgba(255,99,132,1)',
+            'rgba(49, 55, 36, 0.8)'
+        ],
+        borderWidth: 1
+        }]
+    },
+    options: {
+        responsive: false,
+        plugins: {
+            title: {
+                display: true,
+                text: "Deaths per Age Group"
+            }
+        }
+
+    }
+});
+
+</script>
+
 </body>
 </html>
